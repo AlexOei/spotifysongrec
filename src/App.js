@@ -2,9 +2,6 @@ import React, {useEffect, useState} from 'react';
 import spotify from './services/spotify'
 import apiID from './config.json'
 import Button from 'react-bootstrap/Button';
-import Container  from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 
@@ -14,7 +11,7 @@ require('dotenv').config()
 const Login = ()=> {
     const REACT_APP_CLIENT_ID='52e8d8d4caef421282f7f37369eaa7ea'
     const REACT_APP_AUTHORIZE_URL='https://accounts.spotify.com/authorize'
-    const REACT_APP_REDIRECT_URL='http://localhost:3000/redirect'
+    const REACT_APP_REDIRECT_URL='http://alexoei.github.io/spotifysongrecs'
 
     const handleLogin = () => {
         window.location = `${REACT_APP_AUTHORIZE_URL}?client_id=${REACT_APP_CLIENT_ID}&redirect_uri=${REACT_APP_REDIRECT_URL}&scope=playlist-modify-public%20playlist-modify-private%20user-read-private%20user-read-email%20playlist-read-private%20playlist-read-collaborative&response_type=token&show_dialog=true`;
@@ -333,7 +330,7 @@ const Destination = ({recs, token, userID, setDone, setPlayID, playlists, appleP
         return(
             <div>
                 <CreatePlaylist recs={recs} setPlayID={setPlayID} setDone={setDone} userID={userID} token={token} appleToken={appleToken}/>
-                <AddToPlaylist recs={recs} playlists={playlists} setDone={setDone} setPlayID={setPlayID} applePlay={applePlay} appleToken={appleToken}/>
+                <AddToPlaylist recs={recs} playlists={playlists} setDone={setDone} setPlayID={setPlayID} token={token} applePlay={applePlay} appleToken={appleToken}/>
             </div>
         )
     }
